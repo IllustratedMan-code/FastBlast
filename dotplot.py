@@ -4,12 +4,10 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 
-os.chdir("/home/david/Documents/blast/Blastfiles/outputfiles/Genelists/GOoutput")
+os.chdir("/home/david/Documents/BenoitLab/FastBlast/datafiles/")
 
-data = pd.read_csv("downDeet.csv", sep="\t", skiprows=11)
+data = pd.read_csv("downPermLeg.csv", sep="\t", skiprows=11)
 print(data.columns)
-
-
 
 
 
@@ -34,7 +32,7 @@ def data_condensor(data, dataslice=None):
 
 d = data_condensor(data, dataslice=data.iloc[:, 1:4])
     
-px.scatter(
+fig = px.scatter(
             d,
             y="annotation", 
             x="data", 
@@ -49,6 +47,5 @@ px.scatter(
             
             )
 
-
-
-            
+fig.write_html("plotlyfigure.html")
+fig.show()
