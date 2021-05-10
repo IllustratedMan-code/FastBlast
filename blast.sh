@@ -23,6 +23,6 @@ echo running blastx
 blastx -query  temp.fasta -db ~/Documents/blast/Iclc.fasta -out tempblast.out -num_threads 10
 
 echo reformatting output
-fae tempblast.out $output
+./fae tempblast.out $output
 
 echo done
