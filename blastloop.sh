@@ -1,11 +1,27 @@
 #!bin/bash
 
+if [ $# -eq 0 ]; then
+	echo Enter the name of the blast database
+	read blastdb
+	
+	echo Enter the directory where the gene lists are located
+	read genelists
 
-STR="outputfiles/"
-for f in Genelists/*
+	echo Enter the output directory
+	read output
+else
+	echo using command line arguments
+	blastdb=$1
+	genelists=$2
+	output=$3
+fi
+
+
+for file in $genelists/*
 do
-	echo $STR$f
-	sh blast.sh $f $STR$f
+	filename=$(basename $file)
+	echo $output$filename
+	sh blast.sh $file $STR$filename
 	
 done
 

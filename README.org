@@ -5,6 +5,13 @@
 [[https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download][Go Here]] and follow the instructions to install blast+
 ** Create a blast database in the terminal
 #+begin_src sh
-makeblastdb -in <reference.fa> -dbtype nucl -parse_seqids -out <database_name> -title "Database title"
+makeblastdb -in <reference.fa> -dbtype prot -parse_seqids -out <database_name> -title "Database title"
 #+end_src
 + The =parse_seqids= option is used to keep the sequence identifiers from the reference fasta file, otherwise blast will generate its own
++ =dbtype= (database type) must match your dataset, =blastx= uses dbtype prot for protein
++ the =<>= symbols are not included when running it with the intended files
+** Blast the test files against the reference database
+#+begin_src sh
+sh blastloop.sh <blastdb-Name> <Test-gene-directory> <output-directory>
+#+end_src
+The blast comparisons should now be in the output-directory
