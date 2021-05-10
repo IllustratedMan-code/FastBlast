@@ -1,0 +1,10 @@
+#+title: programs to speed up analysis with the ncbi-blast command line tool
+
+* How to use
+** Make sure that the ncbi-blast command line tool is installed
+[[https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download][Go Here]] and follow the instructions to install blast+
+** Create a blast database in the terminal
+#+begin_src sh
+makeblastdb -in <reference.fa> -dbtype nucl -parse_seqids -out <database_name> -title "Database title"
+#+end_src
++ The =parse_seqids= option is used to keep the sequence identifiers from the reference fasta file, otherwise blast will generate its own

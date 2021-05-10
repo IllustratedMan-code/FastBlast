@@ -10,13 +10,14 @@ if [ $# -eq 0 ]; then
 	read output
 else
 	echo using command line arguments
-	genelist=$1
-	output=$2
+	blastdb=$1
+	genelist=$2
+	output=$3
 fi
 echo
 echo extracting gene information from fasta
 
-fae $genelist ~/Documents/blast/db/full.fasta temp.fasta
+./fae $genelist ~/Documents/blast/db/full.fasta temp.fasta
 
 echo running blastx
 blastx -query  temp.fasta -db ~/Documents/blast/Iclc.fasta -out tempblast.out -num_threads 10
