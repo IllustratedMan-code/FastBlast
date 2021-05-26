@@ -21,7 +21,7 @@ for file in $genelists/*
 do
 	filename=$(basename $file)
 	echo $output$filename
-	sh blast.sh $file $STR$filename
+	sh blast.sh $file $blastdb $filename
 	
 done
 
