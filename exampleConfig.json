@@ -1,0 +1,26 @@
+{
+  "paths": [
+    {
+      "Name": "FastBlast",
+      "Path": "/home/david/Documents/BenoitLab/FastBlast"
+    },
+    { "Name": "blast", "Path": "/usr/bin/blastp" },
+    {
+      "Name": "blastdb",
+      "Path": "/home/david/Documents/BenoitLab/NewBlast/Iclc"
+    },
+    {
+      "Name": "output",
+      "Path": "/home/david/Documents/BenoitLab/NewBlast/Output"
+    },
+    {
+      "Name": "GeneDir",
+      "Path": "/home/david/Documents/BenoitLab/RNA-seq/edgeR-Genes/genelists"
+    },
+    {
+      "Name": "Assembly",
+      "Path": "/home/david/Documents/BenoitLab/NewBlast/DVAssembly.fasta"
+    }
+  ],
+  "settings": [{ "Name": "ThreadCount", "Value": "8" }]
+}

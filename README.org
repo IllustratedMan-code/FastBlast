@@ -1,17 +1,79 @@
 #+title: programs to speed up analysis with the ncbi-blast command line tool
 
-* How to use
+* Platforms
++ Linux
++ MacOS
++ Windows
+  Disclaimer: This has not been tested in windows, but it should still work especially if you have some kind of linux emulator installed.
+
+  If you have experience with the command prompt, you should be able to work your way through the rest of the README.
+* Required skills
+If you have never used a terminal emulator before (also called the commmand prompt, or the shell) before, don't worry. Do some searching to find what the terminal program is on your platform (it is already installed most of the time), open it and test out the following commands.
+** terminal
++ [[https://linuxize.com/post/linux-cd-command/][cd command]]
++ [[https://www.freecodecamp.org/news/the-linux-ls-command-how-to-list-files-in-a-directory-with-options/][ls command]]
+* Install
 ** Make sure that the ncbi-blast command line tool is installed
-[[https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download][Go Here]] and follow the instructions to install blast+
+[[https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download][Go Here]] and follow the instructions to install blast+. Afterwords if you type =blastx= in the terminal, you should get the following output:
+#+begin_src sh
+$ blastx
+BLAST query/options error: Either a BLAST database or subject sequence(s) must be specified
+Please refer to the BLAST+ user manual.
+#+end_src
+** Make sure git is intalled (optional)
+[[https://git-scm.com/book/en/v2/Getting-Started-Installing-Git][Go here]] and follow the instructions to install git. Afterwords if you type =git= in the terminal, you should get the following output:
+#+begin_src sh
+$ git
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [--super-prefix=<path>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+#+end_src
+** Make sure python3 is installed (on path)
+[[https://www.python.org/downloads/][Go here]] and follow the instructions to install python. Afterwords if you type =python3= in the terminal, you should enter the python interpreter. Type =quit()= to exit.
+#+begin_src sh
+$ python3
+Python 3.8.5 (default, Sep  4 2020, 07:30:14)
+[GCC 7.3.0] :: Anaconda, Inc. on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> quit()
+$
+#+end_src
+** Git clone this repository (optional)
++ Use the =cd= command to travel to the folder where you want the git repository to be located (Desktop might be a good place).
++ Run this command (paste this into the terminal)
+  #+begin_src sh
+git clone https://github.com/IllustratedMan-code/FastBlast.git
+  #+end_src
++ Now if you run =ls= you should see a folder called FastBlast
++ =cd= into this folder for the next section
++ if you run =git pull= in this directory any changes made to the online repository will be updated on the local copy.
+
+** Download the repository (only required if you did not follow the git steps)
++ Download the repository as a zip with the button in the picture below
+  [[file:Images/ZipDownload.png]]
++ Extract the zip where you want it
++ Open the terminal and use the =cd= command to enter the folder that you just extracted for the next section
+* How to use
 ** Create a blast database in the terminal
+Go to the directory where you
 #+begin_src sh
 makeblastdb -in <reference.fa> -dbtype prot -parse_seqids -out <database_name> -title "Database title"
 #+end_src
 + The =parse_seqids= option is used to keep the sequence identifiers from the reference fasta file, otherwise blast will generate its own
 + =dbtype= (database type) must match your dataset, =blastx= uses dbtype prot for protein
 + the =<>= symbols are not included when running it with the intended files
-** Blast the test files against the reference database
-#+begin_src sh
-sh blastloop.sh <blastdb-Name> <Test-gene-directory> <output-directory>
-#+end_src
-The blast comparisons should now be in the output-directory
+** Generate the config for your project
+This assumes that you need to blast a directory of files containing only lists of the genes of interest(csv format). This program will take every one of those files and blast it against a database.
++ Example data format (treatment1.csv)
+  | Dv.1 |
+  | Dv.2 |
+  | Dv.3 |
+  | Dv.6 |
++ While in the FastBlast directory, run =python3 config.py=. You will be greeted with instructions that will setup the environment to run the blast command.
++ Alternatively, just edit the =config.json= file directly with a text editor. Use =exampleConfig.json= as a reference.
+** Blast the genes
+Assuming you have setup the config correctly, run =python3 blast.py=. All the files the program generated will be inserted into your chosen output directory.
+** TODO Webscraper tutorial
