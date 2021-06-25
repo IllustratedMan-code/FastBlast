@@ -82,4 +82,4 @@ These "Webscrapers" automate analysis with the following tools.
 + G:profiler
 + Geneontology.org
 These are primarily web based tools with no easy way to automate analysis. This would not normally be an issue, but the datasets used i the experiments that I work with are contained in many different files.
-The solution is a way to automate use of the web GUI to perform the analyis. This is done in python and javascript for now. I will convert all of them to javascript at some point (python doesn't interact well with javascript in the browser). I hope to write a config system at some point to help with the automation. Right now some editing is required before running the scripts.
+The solution is a way to automate use of the web GUI to perform the analyis. This is all done in javascript using a node runtime. I hope to write a config system at some point to help with the automation. Right now some editing is required before running the scripts.
