@@ -77,4 +77,9 @@ This assumes that you need to blast a directory of files containing only lists o
 ** Blast the genes
 Assuming you have setup the config correctly, run =python3 blast.py=. All the files the program generated will be inserted into your chosen output directory.
 ** TODO Webscraper tutorial
- + TODO
+These "Webscrapers" automate analysis with the following tools.
++ Revigo
++ G:profiler
++ Geneontology.org
+These are primarily web based tools with no easy way to automate analysis. This would not normally be an issue, but the datasets used i the experiments that I work with are contained in many different files.
+The solution is a way to automate use of the web GUI to perform the analyis. This is done in python and javascript for now. I will convert all of them to javascript at some point (python doesn't interact well with javascript in the browser). I hope to write a config system at some point to help with the automation. Right now some editing is required before running the scripts.
